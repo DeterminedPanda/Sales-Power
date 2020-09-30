@@ -3,8 +3,8 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - List</title>
-    <link rel="stylesheet" href="menu.css">
-    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 <?php

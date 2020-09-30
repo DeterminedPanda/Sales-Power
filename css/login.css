@@ -1,0 +1,22 @@
+#container {
+
+}
+
+#image-container {
+    text-align: center;
+}
+
+#login-button {
+    background-color: #008ea9;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    border: none;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    box-sizing: border-box;
+    margin: 10px 0 0 0;
+}

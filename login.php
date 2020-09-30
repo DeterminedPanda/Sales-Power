@@ -3,17 +3,12 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - Login</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 
-<h1>Login</h1>
-
 <?php
-# debugging stuff start
-echo $_SERVER['REQUEST_METHOD'] . "<br>";
-# debugging stuff end
-
 include("session_manager.php");
 session_start();
 if (isset($_POST["username"])) {
@@ -28,11 +23,11 @@ if (isset($_POST["username"])) {
     </form>
 <?php else: ?>
     <form method="post" action="login.php">
-        <div class="imgcontainer">
-            <img src="images/logo.png" class="logo">
-        </div>
+        <div id="container">
+            <div id="image-container">
+                <img src="images/logo.png" id="logo">
+            </div>
 
-        <div class="container">
             <label><b>Benutzername:</b></label>
             <input type="text" name="username" placeholder="Geben Sie hier Ihren Benutzernamen ein" required/>
             <br>
@@ -41,10 +36,12 @@ if (isset($_POST["username"])) {
             <input type="password" name="password" placeholder="Geben Sie hier Ihr Passwort ein" required/>
             <br>
             <br>
-            <Button type="submit">Anmelden</Button>
+            <Button type="submit" id="login-button">Anmelden</Button>
         </div>
     </form>
 <?php endif; ?>
+
+<?php include("footer.html"); ?>
 
 </body>
 </html>

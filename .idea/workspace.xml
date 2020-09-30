@@ -34,6 +34,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Sales Power" />
+      <recent name="C:\xampp\htdocs\Sales Power\view" />
+      <recent name="C:\xampp\htdocs\Sales Power\css" />
       <recent name="C:\xampp\htdocs\Sales Power\images" />
     </key>
   </component>
@@ -45,7 +48,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601488611818</updated>
-      <workItem from="1601488612876" duration="10526000" />
+      <workItem from="1601488612876" duration="12983000" />
     </task>
     <servers />
   </component>
@@ -57,13 +60,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="957" y="544" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601494044788" />
-    <state x="623" y="266" key="SettingsEditor" timestamp="1601498897597">
+    <state x="623" y="266" key="SettingsEditor" timestamp="1601501008970">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="266" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601498897597" />
+    <state x="623" y="266" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601501008970" />
     <state x="988" y="208" width="585" height="801" key="find.popup" timestamp="1601497669382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="988" y="208" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601497669382" />
+    <state x="755" y="333" width="672" height="678" key="search.everywhere.popup" timestamp="1601500772462">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="755" y="333" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601500772462" />
   </component>
 </project>
