@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - Logout</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
 </head>
 <body>
 

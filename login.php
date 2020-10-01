@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - Login</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
@@ -27,12 +28,15 @@ if (isLoggedIn()) { #redirect if already logged in else login form is shown
             <img src="images/logo.png" alt="logo" id="logo">
         </div>
 
-        <label><b>Benutzername:</b></label>
-        <input type="text" name="username" placeholder="Geben Sie hier Ihren Benutzernamen ein" required/>
+        <label><b>Benutzername:</b>
+            <input type="text" name="username" placeholder="Geben Sie hier Ihren Benutzernamen ein" required/>
+        </label>
         <br>
         <br>
-        <label><b>Passwort:</b></label>
-        <input type="password" name="password" placeholder="Geben Sie hier Ihr Passwort ein" required/>
+
+        <label><b>Passwort:</b>
+            <input type="password" name="password" placeholder="Geben Sie hier Ihr Passwort ein" required/>
+        </label>
         <br>
         <br>
         <Button type="submit" id="login-button">Anmelden</Button>

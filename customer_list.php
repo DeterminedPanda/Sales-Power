@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - Liste</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
@@ -18,7 +19,9 @@ if (!isLoggedIn()) {
 
 <?php include("menu.html"); ?>
 
-<h1>Kundenliste</h1>
+<div id="content">
+    <h1>Kundenliste</h1>
+</div>
 
 <?php include("footer.html"); ?>
 
