@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <meta charset="UTF-8">
 <head>
-    <title>Sales Power - List</title>
+    <title>Sales Power - Liste</title>
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
@@ -18,7 +18,7 @@ if (!isLoggedIn()) {
 
 <?php include("menu.html"); ?>
 
-<h1>List :)</h1>
+<h1>Kundenliste</h1>
 
 <?php include("footer.html"); ?>
 

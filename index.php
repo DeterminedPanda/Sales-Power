@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <meta charset="UTF-8">
 <head>
-<title>Sales Power - Index</title>
+    <title>Sales Power - Index</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-
 <?php
 include("session_manager.php");
-$tmp = session_start();
-if($tmp) {
-    echo isLoggedIn() ? "true" : "false";
-    initializeSessionParameters();
-    echo isLoggedIn() ? "true" : "false";
-    echo "<br>Username:" .  getUsername();
-} else {
-    echo "ERROR!!!";
+session_start();
+if (!isLoggedIn()) {
+    header("Location: login.php");
+    die();
 }
 ?>
 
+<?php include("menu.html"); ?>
+
+<h1>Index</h1>
+Willkommen zurück <?php echo getUsername() ?>!
 <br>
-<a href="list.php">next site hihi :)</a>
+Ihr Berechtigungslevel ist <b>X</b>
+<br>
+Ihnen sind <b>0</b> Kunden zugeteilt
+
+<?php include("footer.html"); ?>
 
 </body>
 </html>

@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c444244-5d60-4dc7-b15c-2175ff88d2da" name="Default Changelist" comment="" />
+    <list default="true" id="0c444244-5d60-4dc7-b15c-2175ff88d2da" name="Default Changelist" comment="did some more work...haha">
+      <change afterPath="$PROJECT_DIR$/database_manager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/menu.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +45,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1iF1dFnenphmJ0Cts8NoxuCVCwu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,6 +60,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -48,26 +80,60 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601488611818</updated>
-      <workItem from="1601488612876" duration="12983000" />
+      <workItem from="1601488612876" duration="13626000" />
+      <workItem from="1601554353342" duration="6012000" />
+      <workItem from="1601576828245" duration="7839000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="did some more work...haha" />
+    <option name="LAST_COMMIT_MESSAGE" value="did some more work...haha" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="957" y="544" key="NewPhpFileDialog" timestamp="1601494044788">
+    <state x="618" y="193" key="#Inspections" timestamp="1601578663806">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="957" y="544" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601494044788" />
-    <state x="623" y="266" key="SettingsEditor" timestamp="1601501008970">
+    <state x="618" y="193" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1601578663806" />
+    <state x="595" y="385" width="1247" height="316" key="#SQL_Dialects" timestamp="1601585663428">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="266" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601501008970" />
+    <state x="595" y="385" width="1247" height="316" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1601585663428" />
+    <state x="1001" y="512" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601557534065">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1001" y="512" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601557534065" />
+    <state x="957" y="544" key="NewPhpFileDialog" timestamp="1601581300179">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="957" y="544" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601581300179" />
+    <state x="623" y="266" key="SettingsEditor" timestamp="1601582586923">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="266" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601582586923" />
     <state x="988" y="208" width="585" height="801" key="find.popup" timestamp="1601497669382">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="988" y="208" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601497669382" />
+    <state x="1097" y="254" key="run.anything.popup" timestamp="1601581716086">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1097" y="254" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601581716086" />
     <state x="755" y="333" width="672" height="678" key="search.everywhere.popup" timestamp="1601500772462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
