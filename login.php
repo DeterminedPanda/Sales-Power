@@ -10,7 +10,7 @@
 <body>
 
 <?php
-include("session_manager.php");
+include("util/session_manager.php");
 session_start();
 if (isset($_POST["username"]) && isset($_POST["password"])) { #check if POST request
     initializeSessionParameters($_POST["username"]);

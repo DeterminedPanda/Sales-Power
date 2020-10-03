@@ -9,8 +9,8 @@
 </head>
 <body>
 <?php
-include("session_manager.php");
-include("database_manager.php");
+include("util/session_manager.php");
+include("util/database_manager.php");
 session_start();
 if (!isLoggedIn()) {
     header("Location: login.php");
@@ -27,18 +27,20 @@ if (!isLoggedIn()) {
         <tr>
             <th>Id</th>
             <th>Benutzername</th>
+            <th>Berechtigungslevel</th>
             <th>Aktionen</th>
         </tr>
         </thead>
         <?php
         $conn = createConnection();
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT users.id, username, permission FROM users INNER JOIN permissions on users.permissions_id = permissions.id";
         $results = $conn->query($sql);
 
         while ($row = $results->fetch_assoc()) {
             echo "<tr>";
             echo "<td> $row[id]</td>";
             echo "<td> $row[username]</td>";
+            echo "<td> $row[permission]</td>";
             echo "<td><Button>Einsehen</Button><Button>Löschen</Button></td>";
             echo "</tr>";
         }
