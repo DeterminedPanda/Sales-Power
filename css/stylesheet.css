@@ -1,7 +1,9 @@
 html {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+
 html, body {
+    height: 100%;
     padding: 0;
     margin: 0;
 }
@@ -18,6 +20,59 @@ Button {
     border: none;
     cursor: pointer;
     background-color: #bfbfbf;
+}
+
+.button {
+    background-color: #bfbfbf;
+    border: none;
+    color: black;
+    padding: 10px 16px;
+    margin: 0px 2px 0px 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.float-right {
+    float: right;
+}
+
+.list {
+    overflow: auto;
+    max-height: calc(100vh - 350px);
+    min-height: 150px;
+}
+
+.green {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.red {
+    background-color: #f44336;
+    color: white;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+select {
+    width: 100%;
+    height: 45px;
+    padding: 14px;
+    margin: 8px 0 0 0;
 }
 
 Button:focus {

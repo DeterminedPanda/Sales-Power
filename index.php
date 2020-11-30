@@ -11,10 +11,7 @@
 <?php
 include("util/session_manager.php");
 session_start();
-if (!isLoggedIn()) {
-    header("Location: login.php");
-    die();
-}
+redirectIfNotLoggedIn();
 ?>
 
 <?php include("menu.html"); ?>

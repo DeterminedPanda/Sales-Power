@@ -29,20 +29,21 @@ if (isLoggedIn()) { #redirect if already logged in else login form is shown
         </div>
 
         <label><b>Benutzername:</b>
-            <input type="text" name="username" placeholder="Geben Sie hier Ihren Benutzernamen ein" required/>
+            <input type="text" maxlength="32" minlength="6" name="username"
+                   placeholder="Geben Sie hier Ihren Benutzernamen ein" required/>
         </label>
         <br>
         <br>
 
         <label><b>Passwort:</b>
-            <input type="password" name="password" placeholder="Geben Sie hier Ihr Passwort ein" required/>
+            <input type="password" maxlength="32" minlength="6" name="password"
+                   placeholder="Geben Sie hier Ihr Passwort ein" required/>
         </label>
         <br>
         <br>
         <Button type="submit" id="login-button">Anmelden</Button>
     </div>
 </form>
-
 
 <?php include("footer.html"); ?>
 

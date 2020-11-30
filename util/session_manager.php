@@ -16,6 +16,13 @@ function isLoggedIn() {
     return (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true);
 }
 
+function redirectIfNotLoggedIn() {
+    if (!isLoggedIn()) {
+        header("Location: login.php");
+        die();
+    }
+}
+
 function getUsername() {
     if(isLoggedIn()) {
         return $_SESSION["username"];
