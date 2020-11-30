@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - Benutzer Erstellen</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/login.css">
@@ -23,29 +24,35 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["perm
     header("Location: user_list.php");
     die();
 }
+
+$loggedInUser = getCurrentUser(getId());
+if ($loggedInUser["permission"] != "Administrator") { #only Administrators are allowed to view this site
+    header("Location: user_list.php");
+    die();
+}
 ?>
 
 <?php include("menu.html"); ?>
 <div id="content">
     <h1>Benutzer Erstellen</h1>
 
-    <form method="post" action="add_user.php">
+    <form method="post" action="add_user.php" class="form">
         <label><b>Benutzername:</b>
-            <input type="text" maxlength="32" minlength="6" name="username"
+            <input type="text" maxlength="32" minlength="4" name="username"
                    placeholder="Geben Sie hier Ihren Benutzernamen ein" required/>
         </label>
         <br>
         <br>
 
         <label><b>Passwort:</b>
-            <input type="password" maxlength="32" minlength="6" name="password"
+            <input type="password" maxlength="32" minlength="4" name="password"
                    placeholder="Geben Sie hier Ihr Passwort ein" required/>
         </label>
         <br>
         <br>
 
         <label><b>Berechtigungslevel:</b><br>
-            <select name="permission">
+            <select name="permission" class="width-100p">
                 <?php
                 $conn = createConnection();
                 $sql = "SELECT * FROM permissions";

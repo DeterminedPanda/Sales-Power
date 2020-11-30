@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - Benutzer</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/login.css">
@@ -23,6 +24,18 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["perm
     header("Location: user_list.php");
     die();
 }
+
+$loggedInUser = getCurrentUser(getId());
+if ($loggedInUser["permission"] != "Administrator") { #only Administrators are allowed to view this site
+    header("Location: user_list.php");
+    die();
+}
+
+$conn = createConnection();
+$id = $_GET["id"];
+$sql = "SELECT * FROM users where id=$id";
+$user = $conn->query($sql)->fetch_assoc();
+$conn->close();
 ?>
 
 <?php include("menu.html"); ?>
@@ -30,39 +43,31 @@ if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["perm
 <div id="content">
     <h1>Benutzer</h1>
 
-    <?php
-    $conn = createConnection();
-    $id = $_GET["id"];
-    $sql = "SELECT * FROM users where id=$id";
-    $results = $conn->query($sql);
-    $user = $results->fetch_assoc();
-    $conn->close();
-    ?>
-
     <form method="post" action="#">
         <label><b>Benutzername:</b>
-            <input type="text" maxlength="32" minlength="6" name="username"
-                   placeholder="Geben Sie hier Ihren Benutzernamen ein" value="<?php echo "$user[username]"; ?>" required/>
+            <input type="text" maxlength="32" minlength="4" name="username"
+                   placeholder="Geben Sie hier Ihren Benutzernamen ein" value="<?php echo "$user[username]"; ?>"
+                   required/>
         </label>
         <br>
         <br>
 
         <label><b>Passwort:</b>
-            <input type="password" maxlength="32" minlength="6" name="password"
+            <input type="password" maxlength="32" minlength="4" name="password"
                    placeholder="Geben Sie hier Ihr Passwort ein" value="<?php echo "$user[password]"; ?>" required/>
         </label>
         <br>
         <br>
 
         <label><b>Berechtigungslevel:</b><br>
-            <select name="permission">
+            <select name="permission" class="width-100p">
                 <?php
                 $conn = createConnection();
                 $sql = "SELECT * FROM permissions";
                 $results = $conn->query($sql);
 
                 while ($row = $results->fetch_assoc()) {
-                    if($user["permissions_id"] == $row["id"]) { #add "select" to option if current permission id equals id of row
+                    if ($user["permissions_id"] == $row["id"]) { #add "select" to option if current permission id equals id of row
                         echo "<option value='$row[id]' selected>$row[permission]</option>";
                     } else {
                         echo "<option value='$row[id]'>$row[permission]</option>";

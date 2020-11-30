@@ -3,6 +3,7 @@
 <meta charset="UTF-8">
 <head>
     <title>Sales Power - Kunde Hinzufügen</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/login.css">
@@ -45,7 +46,7 @@ if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["las
         <br>
 
         <label><b>Sachbearbeiter:</b><br>
-            <select name="users_id">
+            <select name="users_id" class="width-100p">
                 <?php
                 $conn = createConnection();
                 $sql = "SELECT * FROM users";

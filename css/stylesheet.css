@@ -13,6 +13,17 @@ html, body {
     margin: 50px auto;
 }
 
+
+select {
+    height: 45px;
+    padding: 14px;
+    margin: 8px 0 0 0;
+}
+
+.width-100p {
+    width: 100%;
+}
+
 Button {
     color: black;
     padding: 10px;
@@ -20,6 +31,39 @@ Button {
     border: none;
     cursor: pointer;
     background-color: #bfbfbf;
+}
+
+.header {
+    margin-bottom: 21px;
+}
+
+.header form {
+    float: right;
+}
+
+
+.header h1 {
+    height: 20px;
+    display: inline;
+}
+
+.header select {
+    max-width: 100%;
+    margin: 0px;
+    padding: 0px 10px 0px 10px;
+    height: 35px;
+}
+
+.font18 {
+    font-size: 18px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }
 
 .button {
@@ -68,12 +112,6 @@ textarea {
     height: 100px;
 }
 
-select {
-    width: 100%;
-    height: 45px;
-    padding: 14px;
-    margin: 8px 0 0 0;
-}
 
 Button:focus {
     outline-width: 0;
