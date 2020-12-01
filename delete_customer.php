@@ -20,5 +20,5 @@ $results = $conn->query($sql);
 $conn->close();
 
 header("Location: customer_list.php");
-?>
+die();
 ?>
