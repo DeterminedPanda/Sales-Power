@@ -17,25 +17,21 @@ session_start();
 redirectIfNotLoggedIn();
 
 if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["permission"])) { #check if POST request
-    $conn = createConnection();
-    $sql = "UPDATE users SET username = '$_POST[username]', password = '$_POST[password]', permissions_id = '$_POST[permission]' WHERE id = $_GET[id]";
-    $results = $conn->query($sql);
-    $conn->close();
+    $query = "UPDATE users SET username = '$_POST[username]', password = '$_POST[password]', permissions_id = '$_POST[permission]' WHERE id = $_GET[id]";
+    $results = executeStatement($query);
     header("Location: user_list.php");
     die();
 }
 
-$loggedInUser = getCurrentUser(getId());
+$loggedInUser = getUser(getId());
 if ($loggedInUser["permission"] != "Administrator") { #only Administrators are allowed to view this site
     header("Location: user_list.php");
     die();
 }
 
-$conn = createConnection();
 $id = $_GET["id"];
-$sql = "SELECT * FROM users where id=$id";
-$user = $conn->query($sql)->fetch_assoc();
-$conn->close();
+$query = "SELECT * FROM users where id=$id";
+$user = executeStatement($query)->fetch_assoc();
 ?>
 
 <?php include("menu.html"); ?>
@@ -62,18 +58,16 @@ $conn->close();
         <label><b>Berechtigungslevel:</b><br>
             <select name="permission" class="width-100p">
                 <?php
-                $conn = createConnection();
-                $sql = "SELECT * FROM permissions";
-                $results = $conn->query($sql);
+                $query = "SELECT * FROM permissions";
+                $permissions = executeStatement($query);
 
-                while ($row = $results->fetch_assoc()) {
+                while ($row = $permissions->fetch_assoc()) {
                     if ($user["permissions_id"] == $row["id"]) { #add "select" to option if current permission id equals id of row
                         echo "<option value='$row[id]' selected>$row[permission]</option>";
                     } else {
                         echo "<option value='$row[id]'>$row[permission]</option>";
                     }
                 }
-                $conn->close();
                 ?>
             </select>
         </label>

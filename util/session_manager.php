@@ -18,8 +18,8 @@ function validateLoginInformation($username, $password) {
     $conn = createConnection();
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     $results = $conn->query($sql);
-    $row = $results->fetch_assoc();
     $conn->close();
+    $row = $results->fetch_assoc();
     return $row; # true if login information is correct, else false
 }
 

@@ -50,12 +50,11 @@ redirectIfNotLoggedIn();
             </tr>
             </thead>
             <?php
-            $loggedInUser = getCurrentUser(getId());
-            $conn = createConnection();
+            $loggedInUser = getUser(getId());
             $column = $_GET["column"] ?? "id";
             $order = $_GET["order"] ?? "ASC";
-            $sql = "SELECT customers.id, customers.firstname, customers.lastname, customers.users_id, users.username FROM customers INNER JOIN users on customers.users_id = users.id ORDER BY $column $order";
-            $customers = $conn->query($sql);
+            $query = "SELECT customers.id, customers.firstname, customers.lastname, customers.users_id, users.username FROM customers INNER JOIN users on customers.users_id = users.id ORDER BY $column $order";
+            $customers = executeStatement($query);
 
             while ($row = $customers->fetch_assoc()) {
                 echo "<tr>";
@@ -72,7 +71,6 @@ redirectIfNotLoggedIn();
                 echo "</td>";
                 echo "</tr>";
             }
-            $conn->close();
             ?>
         </table>
     </div>

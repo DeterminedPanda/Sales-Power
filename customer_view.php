@@ -17,11 +17,9 @@ session_start();
 redirectIfNotLoggedIn();
 
 if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["birthday"])) { #check if POST request
-    $conn = createConnection();
-    $sql = "UPDATE customers SET users_id = '$_POST[users_id]', firstname = '$_POST[firstname]', 
+    $query = "UPDATE customers SET users_id = '$_POST[users_id]', firstname = '$_POST[firstname]', 
                      lastname = '$_POST[lastname]', birthday= '$_POST[birthday]', note =  '$_POST[note]' WHERE id = $_GET[id]";
-    $results = $conn->query($sql);
-    $conn->close();
+    $results = executeStatement($query);
     header("Location: customer_list.php");
     die();
 }
@@ -54,9 +52,8 @@ $customer = getCustomer($_GET["id"]);
         <label><b>Sachbearbeiter:</b><br>
             <select name="users_id" class="width-100p">
                 <?php
-                $conn = createConnection();
-                $sql = "SELECT * FROM users";
-                $users = $conn->query($sql);
+                $query = "SELECT * FROM users";
+                $users = executeStatement($query);
 
                 while ($row = $users->fetch_assoc()) {
                     if ($customer[users_id] == $row[id]) { #add "select" to option if current user id equals id of row
@@ -65,7 +62,6 @@ $customer = getCustomer($_GET["id"]);
                         echo "<option value='$row[id]'>$row[username]</option>";
                     }
                 }
-                $conn->close();
                 ?>
             </select>
         </label>
@@ -81,7 +77,7 @@ $customer = getCustomer($_GET["id"]);
         </label>
         <?php
         #only Administrators and responsible User are allowed to update customer information
-        $loggedInUser = getCurrentUser(getId());
+        $loggedInUser = getUser(getId());
         if ($loggedInUser["permission"] == "Administrator" or $loggedInUser["id"] == $customer["users_id"]) {
             echo "<Button type='submit' class='float-right m-t-10 green'>Kunde Aktualisieren</Button>";
         }

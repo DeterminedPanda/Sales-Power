@@ -23,7 +23,7 @@ redirectIfNotLoggedIn();
     <h1>Index</h1>
     <p class="font18">
     <?php
-    $user = getCurrentUser(getId());
+    $user = getUser(getId());
     echo "Willkommen zurück <b class='uppercase'>$user[username]</b>!<br>";
     if($user["permission"] == "Administrator") {
         echo "Ihr Berechtigungslevel ist <b>Administrator</b>, Sie haben vollen Zugriff auf alle Funktionen<br>";
@@ -31,12 +31,10 @@ redirectIfNotLoggedIn();
         echo "Ihr Berechtigungslevel ist <b>Sachbearbeiter</b>, Sie haben <b>nicht</b> Zugriff auf alle Funktionen<br>";
     }
 
-    $conn = createConnection();
-    $sql = "SELECT COUNT(firstname) as count FROM customers WHERE users_id = $user[id]";
-    $results = $conn->query($sql);
-    $row = $results->fetch_assoc();
-    echo "Ihnen Sind <b>$row[count]</b> Kunden zugeteilt.";
-    $conn->close();
+
+    $query = "SELECT COUNT(firstname) as count FROM customers WHERE users_id = $user[id]";
+    $result = executeStatement($query)->fetch_assoc();
+    echo "Ihnen Sind <b>$result[count]</b> Kunden zugeteilt.";
     ?>
     </p>
     <br>

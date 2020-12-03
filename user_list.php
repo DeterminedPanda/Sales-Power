@@ -14,7 +14,7 @@ include("util/session_manager.php");
 include("util/database_manager.php");
 session_start();
 redirectIfNotLoggedIn();
-$loggedInUser = getCurrentUser(getId());
+$loggedInUser = getUser(getId());
 ?>
 
 <?php include("menu.html"); ?>
@@ -47,11 +47,10 @@ $loggedInUser = getCurrentUser(getId());
             </tr>
             </thead>
             <?php
-            $conn = createConnection();
             $column = $_GET["column"] ?? "id";
             $order = $_GET["order"] ?? "ASC";
-            $sql = "SELECT users.id, username, permission FROM users INNER JOIN permissions on users.permissions_id = permissions.id ORDER BY $column $order";
-            $results = $conn->query($sql);
+            $query = "SELECT users.id, username, permission FROM users INNER JOIN permissions on users.permissions_id = permissions.id ORDER BY $column $order";
+            $results = executeStatement($query);
 
             while ($row = $results->fetch_assoc()) {
                 echo "<tr>";
@@ -68,7 +67,6 @@ $loggedInUser = getCurrentUser(getId());
                 echo "</td>";
                 echo "</tr>";
             }
-            $conn->close();
             ?>
         </table>
     </div>

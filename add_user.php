@@ -17,15 +17,13 @@ session_start();
 redirectIfNotLoggedIn();
 
 if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["permission"])) { #check if POST request
-    $conn = createConnection();
-    $sql = "INSERT INTO users (username, password, permissions_id) VALUES ('$_POST[username]', '$_POST[password]', '$_POST[permission]')";
-    $results = $conn->query($sql);
-    $conn->close();
+    $query = "INSERT INTO users (username, password, permissions_id) VALUES ('$_POST[username]', '$_POST[password]', '$_POST[permission]')";
+    $results = executeStatement($query);
     header("Location: user_list.php");
     die();
 }
 
-$loggedInUser = getCurrentUser(getId());
+$loggedInUser = getUser(getId());
 if ($loggedInUser["permission"] != "Administrator") { #only Administrators are allowed to view this site
     header("Location: user_list.php");
     die();
@@ -54,14 +52,12 @@ if ($loggedInUser["permission"] != "Administrator") { #only Administrators are a
         <label><b>Berechtigungslevel:</b><br>
             <select name="permission" class="width-100p">
                 <?php
-                $conn = createConnection();
-                $sql = "SELECT * FROM permissions";
-                $results = $conn->query($sql);
+                $query = "SELECT * FROM permissions";
+                $permissions = executeStatement($query);
 
-                while ($row = $results->fetch_assoc()) {
+                while ($row = $permissions->fetch_assoc()) {
                     echo "<option value='$row[id]'>$row[permission]</option>";
                 }
-                $conn->close();
                 ?>
             </select>
         </label>

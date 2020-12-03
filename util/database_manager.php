@@ -15,7 +15,14 @@ function createConnection() {
     return $conn;
 }
 
-function executeTransaction($conn, $query) {
+function executeStatement($query) {
+    $conn = createConnection();
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
+
+function executeTransaction($query) {
     try {
         $conn->beginTransaction();
         $conn->query($query);
@@ -26,7 +33,7 @@ function executeTransaction($conn, $query) {
     }
 }
 
-function getCurrentUser($id) {
+function getUser($id) {
     $conn = createConnection();
     $sql = "SELECT users.id, username, permission FROM users INNER JOIN permissions on users.permissions_id = permissions.id WHERE users.id = $id";
     $result = $conn->query($sql)->fetch_assoc();

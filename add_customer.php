@@ -17,10 +17,8 @@ session_start();
 redirectIfNotLoggedIn();
 
 if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["birthday"])) { #check if POST request
-    $conn = createConnection();
-    $sql = "INSERT INTO customers (users_id, firstname, lastname, birthday, note) VALUES ('$_POST[users_id]', '$_POST[firstname]', '$_POST[lastname]', '$_POST[birthday]', '$_POST[note]')";
-    $results = $conn->query($sql);
-    $conn->close();
+    $query = "INSERT INTO customers (users_id, firstname, lastname, birthday, note) VALUES ('$_POST[users_id]', '$_POST[firstname]', '$_POST[lastname]', '$_POST[birthday]', '$_POST[note]')";
+    $results = executeStatement($query);
     header("Location: customer_list.php");
     die();
 }
@@ -48,14 +46,12 @@ if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["las
         <label><b>Sachbearbeiter:</b><br>
             <select name="users_id" class="width-100p">
                 <?php
-                $conn = createConnection();
-                $sql = "SELECT * FROM users";
-                $results = $conn->query($sql);
+                $query = "SELECT * FROM users";
+                $users = executeStatement($query);
 
-                while ($row = $results->fetch_assoc()) {
+                while ($row = $users->fetch_assoc()) {
                     echo "<option value='$row[id]'>$row[username]</option>";
                 }
-                $conn->close();
                 ?>
             </select>
         </label>
