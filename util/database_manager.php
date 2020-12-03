@@ -22,17 +22,6 @@ function executeStatement($query) {
     return $result;
 }
 
-function executeTransaction($query) {
-    try {
-        $conn->beginTransaction();
-        $conn->query($query);
-        $conn->commit();
-    } catch (Exception $e) {
-        $conn->rollback();
-        throw $e;
-    }
-}
-
 function getUser($id) {
     $conn = createConnection();
     $sql = "SELECT users.id, username, permission FROM users INNER JOIN permissions on users.permissions_id = permissions.id WHERE users.id = $id";
