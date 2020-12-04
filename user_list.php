@@ -18,25 +18,34 @@ $loggedInUser = getUser(getId());
 ?>
 
 <?php include("menu.html"); ?>
+
 <div id="content">
 
     <div class="header">
         <h1>Benutzerliste</h1>
-        <form method="get" action="user_list.php">
-            <select name="column">
-                <option value="id" selected>Id</option>
-                <option value="username">Benutzername</option>
-                <option value="permissions_id">Berechtigungslevel</option>
-            </select>
-            <select name="order">
-                <option value="ASC">Aufsteigend</option>
-                <option value="DESC">Absteigend</option>
-            </select>
-            <Button type="submit">Sortieren</Button>
-        </form>
+        <details class="m-t-10">
+            <summary style="text-align: right">Filter einblenden</summary>
+            <form method="get" action="user_list.php">
+                <input type="text" name="search" placeholder="Tabelle nach Schlüsselwort durchsuchen..." class="filter"/>
+                <Button type="submit">Suchen</Button>
+            </form>
+            <br>
+            <form method="get" action="user_list.php">
+                <select name="column" class="sort">
+                    <option value="id" selected>Id</option>
+                    <option value="username">Benutzername</option>
+                    <option value="permissions_id">Berechtigungslevel</option>
+                </select>
+                <select name="order" class="sort">
+                    <option value="ASC">Aufsteigend</option>
+                    <option value="DESC">Absteigend</option>
+                </select>
+                <Button type="submit">Sortieren</Button>
+            </form>
+        </details>
     </div>
 
-    <div class="list" style="clear:both;">
+    <div class="list clear">
         <table>
             <thead>
             <tr>
@@ -47,9 +56,11 @@ $loggedInUser = getUser(getId());
             </tr>
             </thead>
             <?php
+            $keyword = $_GET["search"] ?? "";
             $column = $_GET["column"] ?? "id";
             $order = $_GET["order"] ?? "ASC";
-            $query = "SELECT users.id, username, permission FROM users INNER JOIN permissions on users.permissions_id = permissions.id ORDER BY $column $order";
+            $query = "SELECT users.id, username, permission FROM users INNER JOIN permissions ON users.permissions_id = permissions.id 
+                        WHERE users.id LIKE '%$keyword%' OR username LIKE '%$keyword%' OR permission LIKE '%$keyword%' ORDER BY $column $order";
             $results = executeStatement($query);
 
             while ($row = $results->fetch_assoc()) {

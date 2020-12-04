@@ -13,15 +13,10 @@ html, body {
     margin: 50px auto;
 }
 
-
 select {
     height: 45px;
     padding: 14px;
     margin: 8px 0 0 0;
-}
-
-.width-100p {
-    width: 100%;
 }
 
 Button {
@@ -31,6 +26,48 @@ Button {
     border: none;
     cursor: pointer;
     background-color: #bfbfbf;
+    min-width: 75px;
+    min-height: 35px;
+}
+
+Button:focus {
+    outline-width: 0;
+}
+
+summary {
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+}
+
+textarea:focus, select:focus, input:focus{
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th {
+    background-color: #008ea9;
+    color: white;
+}
+
+.width-100p {
+    width: 100%;
 }
 
 .header {
@@ -43,12 +80,30 @@ Button {
 
 
 .header h1 {
-    height: 20px;
     display: inline;
 }
 
+.header details {
+    float: right;
+    border: 0px;
+    margin-bottom: 10px;
+}
+
+.filter {
+    width: 313px;
+}
+
+.sort {
+    width: 160px;
+}
+
+.header input {
+    height: 31px; /* 31px + 4px (border) = 35px; */
+    margin: 0px;
+    padding: 0px 4px 0px 4px;
+}
+
 .header select {
-    max-width: 100%;
     margin: 0px;
     padding: 0px 10px 0px 10px;
     height: 35px;
@@ -61,6 +116,7 @@ Button {
 .text-center {
     text-align: center;
 }
+
 
 .uppercase {
     text-transform: uppercase;
@@ -87,8 +143,16 @@ Button {
     margin-top: 10px;
 }
 
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
 .float-right {
     float: right;
+}
+
+.clear {
+    clear: both;
 }
 
 .list {
@@ -104,34 +168,5 @@ Button {
 
 .red {
     background-color: #f44336;
-    color: white;
-}
-
-textarea {
-    width: 100%;
-    height: 100px;
-}
-
-
-Button:focus {
-    outline-width: 0;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2
-}
-
-th {
-    background-color: #008ea9;
     color: white;
 }
