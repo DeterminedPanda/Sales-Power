@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 -- Datenbank: `sales_power`
 --
 
+CREATE DATABASE sales_power;
+
 -- --------------------------------------------------------
 
 --

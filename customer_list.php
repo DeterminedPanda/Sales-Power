@@ -62,7 +62,7 @@ redirectIfNotLoggedIn();
             $keyword = $_GET["search"] ?? "";
             $column = $_GET["column"] ?? "id";
             $order = $_GET["order"] ?? "ASC";
-            $query = "SELECT customers.id, customers.firstname, customers.lastname, users.username FROM customers INNER JOIN users on customers.users_id = users.id 
+            $query = "SELECT customers.id, customers.firstname, customers.lastname, users_id, users.username FROM customers INNER JOIN users on customers.users_id = users.id 
                         WHERE customers.id LIKE '%$keyword%' OR customers.firstname LIKE '%$keyword%' OR customers.lastname LIKE '%$keyword%' OR users.username LIKE '%$keyword%' 
                         ORDER BY $column $order";
             $customers = executeStatement($query);
