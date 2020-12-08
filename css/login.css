@@ -4,6 +4,7 @@
 }
 
 #image-container {
+    display: block;
     text-align: center;
 }
 
@@ -24,4 +25,10 @@ input {
 
 input:focus {
     outline-width: 0;
+}
+
+@media only screen and (max-height: 650px) {
+    #image-container {
+        display: none;
+    }
 }
