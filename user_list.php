@@ -21,8 +21,10 @@ $loggedInUser = getUser(getId());
 
 <div id="content">
 
+    <!-- header -->
     <div class="header">
         <h1>Benutzerliste</h1>
+        <!-- filter/sort options -->
         <details class="m-t-10">
             <summary style="text-align: right">Filter einblenden</summary>
             <form method="get" action="user_list.php">
@@ -43,8 +45,11 @@ $loggedInUser = getUser(getId());
                 <Button type="submit">Sortieren</Button>
             </form>
         </details>
+        <!-- filter/sort options end -->
     </div>
+    <!-- header end -->
 
+    <!-- user view -->
     <div class="list clear">
         <table>
             <thead>
@@ -83,6 +88,8 @@ $loggedInUser = getUser(getId());
             ?>
         </table>
     </div>
+    <!-- user view end -->
+
     <?php
     #show the create user option only to administrators
     if ($loggedInUser["permission"] == "Administrator") {

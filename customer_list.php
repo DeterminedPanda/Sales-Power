@@ -20,8 +20,10 @@ redirectIfNotLoggedIn();
 
 <div id="content">
 
+    <!-- header -->
     <div class="header">
         <h1>Kundenliste</h1>
+        <!-- filter/sort options -->
         <details class="m-t-10">
             <summary style="text-align: right">Filter einblenden</summary>
             <form method="get" action="customer_list.php">
@@ -44,8 +46,11 @@ redirectIfNotLoggedIn();
                 <Button type="submit">Sortieren</Button>
             </form>
         </details>
+        <!-- filter/sort options end -->
     </div>
+    <!-- header end -->
 
+    <!-- customer view -->
     <div class="list clear">
         <table>
             <thead>
@@ -86,6 +91,8 @@ redirectIfNotLoggedIn();
             ?>
         </table>
     </div>
+    <!-- customer view end -->
+
     <a href="add_customer.php" class="button float-right m-t-10 green">Kunde Hinzufügen</a>
 </div>
 

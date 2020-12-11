@@ -1,9 +1,9 @@
 <?php
 
 function createConnection() {
-    $servername = "localhost";
+    $servername = "localhost"; #enter your servername here
     $dbname = "sales_power";
-    $username = "root";
+    $username = "root"; #enter your database username here (leave blank if no user authentication is enabled)
     $password = "root"; #enter your database password here (leave blank for no password)
 
     $conn = new mysqli($servername, $username, $password, $dbname);
