@@ -23,6 +23,7 @@ redirectIfNotLoggedIn();
     <h1>Index</h1>
     <p class="font18">
         <?php
+        #show permission level of the user
         $user = getUser(getId());
         echo "Willkommen <b class='uppercase'>$user[username]</b>!<br>";
         if ($user["permission"] == "Administrator") {
@@ -31,7 +32,7 @@ redirectIfNotLoggedIn();
             echo "Ihr Berechtigungslevel ist <b>Sachbearbeiter</b>, Sie haben <b>nicht</b> Zugriff auf alle Funktionen<br>";
         }
 
-
+        #show how many customers the user is responsible for
         $query = "SELECT COUNT(firstname) as count FROM customers WHERE users_id = $user[id]";
         $result = executeStatement($query)->fetch_assoc();
         echo "Ihnen Sind <b>$result[count]</b> Kunden zugeteilt.";

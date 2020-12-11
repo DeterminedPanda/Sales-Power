@@ -19,8 +19,7 @@ function validateLoginInformation($username, $password) {
     $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
     $results = $conn->query($sql);
     $conn->close();
-    $row = $results->fetch_assoc();
-    return $row; # true if login information is correct, else false
+    return $results->fetch_assoc(); #true if login information is correct, else false
 }
 
 function isLoggedIn() {
@@ -34,14 +33,6 @@ function redirectIfNotLoggedIn() {
     }
 }
 
-function getUsername() {
-    if(isLoggedIn()) {
-        return $_SESSION["username"];
-    } else {
-        return "NULL";
-    }
-}
-
 function getId() {
     if(isLoggedIn()) {
         return $_SESSION["id"];
@@ -49,10 +40,3 @@ function getId() {
         return "NULL";
     }
 }
-
-function isAdmin() {
-    #TODO implement function
-    return false;
-}
-
-?>

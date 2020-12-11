@@ -16,15 +16,16 @@ include("util/database_manager.php");
 session_start();
 redirectIfNotLoggedIn();
 
-if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["permission"])) { #check if POST request
-    $query = "INSERT INTO users (username, password, permissions_id) VALUES ('$_POST[username]', '$_POST[password]', '$_POST[permission]')";
-    $results = executeStatement($query);
+$loggedInUser = getUser(getId());
+if ($loggedInUser["permission"] != "Administrator") { #only Administrators are allowed to view this site
     header("Location: user_list.php");
     die();
 }
 
-$loggedInUser = getUser(getId());
-if ($loggedInUser["permission"] != "Administrator") { #only Administrators are allowed to view this site
+#check if POST request and then insert the new user into the database
+if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["permission"])) {
+    $query = "INSERT INTO users (username, password, permissions_id) VALUES ('$_POST[username]', '$_POST[password]', '$_POST[permission]')";
+    $results = executeStatement($query);
     header("Location: user_list.php");
     die();
 }
@@ -55,6 +56,7 @@ if ($loggedInUser["permission"] != "Administrator") { #only Administrators are a
                 $query = "SELECT * FROM permissions";
                 $permissions = executeStatement($query);
 
+                #show all permissions in a <select> tag, so a permission can be selected for the user
                 while ($row = $permissions->fetch_assoc()) {
                     echo "<option value='$row[id]'>$row[permission]</option>";
                 }

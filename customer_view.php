@@ -16,7 +16,8 @@ include("util/database_manager.php");
 session_start();
 redirectIfNotLoggedIn();
 
-if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["birthday"])) { #check if POST request
+#check if POST request and then update the currently viewed customer with the passed new information
+if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["birthday"])) {
     $query = "UPDATE customers SET users_id = '$_POST[users_id]', firstname = '$_POST[firstname]', 
                      lastname = '$_POST[lastname]', birthday= '$_POST[birthday]', note =  '$_POST[note]' WHERE id = $_GET[id]";
     $results = executeStatement($query);
@@ -55,8 +56,9 @@ $customer = getCustomer($_GET["id"]);
                 $query = "SELECT * FROM users";
                 $users = executeStatement($query);
 
+                #show all users in a <select> tag
                 while ($row = $users->fetch_assoc()) {
-                    if ($customer[users_id] == $row[id]) { #add "select" to option if current user id equals id of row
+                    if ($customer[users_id] == $row[id]) { #add "select" to option if current user id equals id of responsible user
                         echo "<option value='$row[id]' selected>$row[username]</option>";
                     } else {
                         echo "<option value='$row[id]'>$row[username]</option>";
@@ -76,7 +78,7 @@ $customer = getCustomer($_GET["id"]);
             <textarea name="note"><?php echo "$customer[note]"; ?></textarea>
         </label>
         <?php
-        #only Administrators and responsible User are allowed to update customer information
+        #only Administrators and the responsible User are allowed to update customer information
         $loggedInUser = getUser(getId());
         if ($loggedInUser["permission"] == "Administrator" or $loggedInUser["id"] == $customer["users_id"]) {
             echo "<Button type='submit' class='float-right m-t-10 green'>Kunde Aktualisieren</Button>";

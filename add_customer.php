@@ -16,7 +16,8 @@ include("util/database_manager.php");
 session_start();
 redirectIfNotLoggedIn();
 
-if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["birthday"])) { #check if POST request
+#check if POST request and then add the passed information into the database
+if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["lastname"]) && isset($_POST["birthday"])) {
     $query = "INSERT INTO customers (users_id, firstname, lastname, birthday, note) VALUES ('$_POST[users_id]', '$_POST[firstname]', '$_POST[lastname]', '$_POST[birthday]', '$_POST[note]')";
     $results = executeStatement($query);
     header("Location: customer_list.php");
@@ -49,6 +50,7 @@ if (isset($_POST["users_id"]) && isset($_POST["firstname"]) && isset($_POST["las
                 $query = "SELECT * FROM users";
                 $users = executeStatement($query);
 
+                #show all users in a <select> tag, so a responsible user can be selected for the customer
                 while ($row = $users->fetch_assoc()) {
                     echo "<option value='$row[id]'>$row[username]</option>";
                 }

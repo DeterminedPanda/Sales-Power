@@ -85,7 +85,7 @@ th {
 
 .header details {
     float: right;
-    border: 0px;
+    border: 0;
     margin-bottom: 10px;
 }
 
@@ -99,13 +99,13 @@ th {
 
 .header input {
     height: 31px; /* 31px + 4px (border) = 35px; */
-    margin: 0px;
-    padding: 0px 4px 0px 4px;
+    margin: 0;
+    padding: 0 4px 0 4px;
 }
 
 .header select {
-    margin: 0px;
-    padding: 0px 10px 0px 10px;
+    margin: 0;
+    padding: 0 10px 0 10px;
     height: 35px;
 }
 
@@ -127,24 +127,15 @@ th {
     border: none;
     color: black;
     padding: 10px 16px;
-    margin: 0px 2px 0px 2px;
+    margin: 0 2px 0 2px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
 }
 
-.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .m-t-10 {
     margin-top: 10px;
-}
-
-.m-b-10 {
-    margin-bottom: 10px;
 }
 
 .float-right {

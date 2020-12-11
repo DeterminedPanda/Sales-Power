@@ -25,19 +25,19 @@ redirectIfNotLoggedIn();
         <details class="m-t-10">
             <summary style="text-align: right">Filter einblenden</summary>
             <form method="get" action="customer_list.php">
-                <input type="text" name="search" placeholder="Tabelle nach Schlüsselwort durchsuchen..."
+                <input aria-label="search" type="text" name="search" placeholder="Tabelle nach Schlüsselwort durchsuchen..."
                        class="filter" />
                 <Button type="submit">Suchen</Button>
             </form>
             <br>
             <form method="get" action="customer_list.php">
-                <select name="column" class="sort">
+                <select aria-label="column" name="column" class="sort">
                     <option value="id" selected>Id</option>
                     <option value="firstname">Vorname</option>
                     <option value="lastname">Nachname</option>
                     <option value="users_id">Sachbearbeiter</option>
                 </select>
-                <select name="order" class="sort">
+                <select aria-label="order" name="order" class="sort">
                     <option value="ASC">Aufsteigend</option>
                     <option value="DESC">Absteigend</option>
                 </select>
@@ -59,14 +59,15 @@ redirectIfNotLoggedIn();
             </thead>
             <?php
             $loggedInUser = getUser(getId());
-            $keyword = $_GET["search"] ?? "";
-            $column = $_GET["column"] ?? "id";
-            $order = $_GET["order"] ?? "ASC";
+            $keyword = $_GET["search"] ?? ""; #parameter search is the keyword being filtered for in the datasets
+            $column = $_GET["column"] ?? "id"; #column is the parameter that gets sorted for
+            $order = $_GET["order"] ?? "ASC"; #order is eithr ascending (ASC) or descending (DESC)
             $query = "SELECT customers.id, customers.firstname, customers.lastname, users_id, users.username FROM customers INNER JOIN users on customers.users_id = users.id 
                         WHERE customers.id LIKE '%$keyword%' OR customers.firstname LIKE '%$keyword%' OR customers.lastname LIKE '%$keyword%' OR users.username LIKE '%$keyword%' 
                         ORDER BY $column $order";
             $customers = executeStatement($query);
 
+            #generate table of all customers that are selected in $query
             while ($row = $customers->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td> $row[id]</td>";

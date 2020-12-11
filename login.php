@@ -14,7 +14,8 @@
 include("util/session_manager.php");
 session_start();
 
-if (isset($_POST["username"]) && isset($_POST["password"])) { #check if POST request
+#check if POST request and then evaluate the passed login informations
+if (isset($_POST["username"]) && isset($_POST["password"])) {
     $userData = validateLoginInformation($_POST["username"], $_POST["password"]);
     if (isset($userData)) {
         initializeSessionParameters($userData["username"], $userData["id"]);
@@ -23,7 +24,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) { #check if POST req
     }
 }
 
-if (isLoggedIn()) { #redirect if already logged in else login form is shown
+if (isLoggedIn()) { #redirect if already logged in else show the login form below
     header("Location: index.php");
     die();
 }
@@ -52,7 +53,7 @@ if (isLoggedIn()) { #redirect if already logged in else login form is shown
         <Button type="submit" id="login-button">Anmelden</Button>
 
         <?php
-        if (isset($error)) {
+        if (isset($error)) { #show error if invalid login information has been entered
             echo "<p style='color: #ff0000;'>$error</p>";
         }
         ?>

@@ -16,19 +16,21 @@ include("util/database_manager.php");
 session_start();
 redirectIfNotLoggedIn();
 
-if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["permission"])) { #check if POST request
-    $query = "UPDATE users SET username = '$_POST[username]', password = '$_POST[password]', permissions_id = '$_POST[permission]' WHERE id = $_GET[id]";
-    $results = executeStatement($query);
-    header("Location: user_list.php");
-    die();
-}
-
 $loggedInUser = getUser(getId());
 if ($loggedInUser["permission"] != "Administrator") { #only Administrators are allowed to view this site
     header("Location: user_list.php");
     die();
 }
 
+#check if POST request and then update user information with the passed POST parameters
+if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["permission"])) {
+    $query = "UPDATE users SET username = '$_POST[username]', password = '$_POST[password]', permissions_id = '$_POST[permission]' WHERE id = $_GET[id]";
+    $results = executeStatement($query);
+    header("Location: user_list.php");
+    die();
+}
+
+#get the information of the currently viewed user
 $id = $_GET["id"];
 $query = "SELECT * FROM users where id=$id";
 $user = executeStatement($query)->fetch_assoc();
@@ -61,6 +63,7 @@ $user = executeStatement($query)->fetch_assoc();
                 $query = "SELECT * FROM permissions";
                 $permissions = executeStatement($query);
 
+                #show all permissions in a <select> tag
                 while ($row = $permissions->fetch_assoc()) {
                     if ($user["permissions_id"] == $row["id"]) { #add "select" to option if current permission id equals id of row
                         echo "<option value='$row[id]' selected>$row[permission]</option>";
