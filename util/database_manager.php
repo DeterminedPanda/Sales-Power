@@ -4,7 +4,7 @@ function createConnection() {
     $servername = "localhost";
     $dbname = "sales_power";
     $username = "root";
-    $password = "root";
+    $password = "root"; #enter your database password here (leave blank for no password)
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
